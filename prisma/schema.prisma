@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model TranscriptionTask {
+  id             String   @id @default(cuid())
+  fileName       String
+  filePath       String?
+  mimeType       String?
+  status         String   @default("processing") // processing | completed | failed
+  language       String?  // auto | ru | en | ...
+  speakersCount  Int?     // null = auto
+  duration       String?  // "00:02:30"
+  result         Json?    // { segments: [...], summary: "..." }
+  errorMessage   String?
+  processedAt    DateTime? // время обработки в секундах
+  createdAt      DateTime @default(now())
+}

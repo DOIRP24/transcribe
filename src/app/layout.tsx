@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { VisualEditsMessenger } from "orchids-visual-edits";
+import { VisualEditsMessengerClient } from "@/components/visual-edits-messenger-client";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Audio Transcriber",
-  description: "Transcribe audio files to text using Gemini AI",
+  title: "Транскрибатор онлайн: аудио в текст с помощью ИИ",
+  description: "Транскрибатор онлайн: аудио в текст с помощью ИИ. Профессиональная транскрибация и саммари встреч.",
 };
 
 export default function RootLayout({
@@ -24,12 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <VisualEditsMessenger />
+        <VisualEditsMessengerClient />
       </body>
     </html>
   );
